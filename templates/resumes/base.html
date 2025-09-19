@@ -1,10 +1,69 @@
-<!DOCTYPE html>
-<html lang="en">
+{% load static %}
+<!doctype html>
+<html lang="zh-CN">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Resume Rewriter{% endblock %}</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
 </head>
-<body>
-$END$
+<body class="app">
+<header class="topbar">
+  <div class="container topbar__inner">
+    <div class="brand">
+      <span class="logo">RR</span>
+      <a class="brand__name" href="{% url 'resumes:dashboard' %}">Resume Rewriter</a>
+    </div>
+<nav class="nav">
+  {% if user.is_authenticated %}
+    <span class="nav__text">Hi, {{ user.username }}</span>
+
+    <!-- 登出表单 -->
+    <form method="post" action="{% url 'logout' %}" style="display:inline;">
+      {% csrf_token %}
+      <button type="submit" class="btn btn--ghost">退出</button>
+    </form>
+
+    <!-- 兼容 GET 点击（可选，如果用户直接访问 /logout/） -->
+    <a href="{% url 'logout' %}" style="display:none;"></a>
+
+    <a class="btn btn--primary" href="{% url 'resumes:debug_text_dashboard' %}">新建改写</a>
+    <a class="btn btn--primary" href="{% url 'resumes:history' %}">我的历史</a>
+{#  {% else %}#}
+{#    <a class="btn btn--primary" href="{% url 'login' %}">登录</a>#}
+  {% endif %}
+</nav>
+  </div>
+</header>
+
+<!-- 面包屑导航 -->
+{% block breadcrumbs %}
+<div class="container breadcrumbs">
+  <a href="{% url 'resumes:dashboard' %}">Dashboard</a>
+  {% if breadcrumb_items %}
+    {% for item in breadcrumb_items %}
+      &raquo; <a href="{{ item.url }}">{{ item.label }}</a>
+    {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
+
+<main class="container main">
+  {% if messages %}
+    <ul class="alerts" role="status">
+      {% for m in messages %}
+        <li class="alert alert--{{ m.tags|default:'info' }}">{{ m }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  {% block content %}{% endblock %}
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <span>© {{ now|date:"Y" }} Resume Rewriter</span>
+  </div>
+</footer>
 </body>
 </html>

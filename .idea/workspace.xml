@@ -1,18 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="e7e5f426-ef3d-479a-b85e-8440f4dcbc2e" name="更改" comment="" />
+    <list default="true" id="e7e5f426-ef3d-479a-b85e-8440f4dcbc2e" name="更改" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/resumeMake.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/resumeMake.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger/conf.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/decorators.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger/decorators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/logger.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger/logger.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger/middleware.py" beforeDir="false" afterPath="$PROJECT_DIR$/logger/middleware.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/promt/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/promt/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/api.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/forms_debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/forms_debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/serializer.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/serializer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/services/provider_ali.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/services/provider_ali.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/services/provider_cn.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/services/provider_cn.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/services/provider_hunyuan.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/services/provider_hunyuan.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/services/providers.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/services/providers.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/services/providers_login.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/services/providers_login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/services/sanitizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/services/sanitizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/tasks.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/tasks.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/templatetags/form_filters.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/templatetags/form_filters.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resume/views_debug.py" beforeDir="false" afterPath="$PROJECT_DIR$/resume/views_debug.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/static/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/debug_text.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/debug_text.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/debug_text_dashboard.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/debug_text_dashboard.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/history.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/history.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/processing.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/processing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/result.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/result.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/resumes/result_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/resumes/result_detail.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="32sLWw07I321qTvmtcZFuika1YE" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -20,13 +68,55 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django 服务器.resumeMake.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "django.template.preview.state": "SHOW_EDITOR_AND_PREVIEW",
+    "git-widget-placeholder": "main",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="F:\resumeMake\logger" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="resumeMake" type="Python.DjangoServer" factoryName="Django server">
+      <module name="resumeMake" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="resumeMake.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -42,8 +132,25 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1758204368335</updated>
-      <workItem from="1758204369392" duration="2000" />
+      <workItem from="1758204369392" duration="1069000" />
+      <workItem from="1758245870150" duration="11621000" />
+      <workItem from="1758265645925" duration="21000" />
+      <workItem from="1758265787343" duration="7323000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

@@ -1,10 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'resumes/base.html' %}
+{% block title %}登录 · Resume Rewriter{% endblock %}
+{% block content %}
+<section class="auth">
+  <div class="card auth__card">
+    <div class="auth__left">
+      <h1 class="h2">欢迎回来</h1>
+      <p class="muted mt-8">使用账号登录，开始智能改写你的简历。</p>
+
+      <form class="form mt-24" method="post">
+        {% csrf_token %}
+        <div class="form__group">
+          <label class="form__label">用户名</label>
+          <input class="input" type="text" name="username" autofocus required />
+        </div>
+        <div class="form__group mt-12">
+          <label class="form__label">密码</label>
+          <input class="input" type="password" name="password" required />
+        </div>
+        <button class="btn btn--primary mt-16 w-100" type="submit">登录</button>
+      </form>
+
+      <p class="muted mt-16">没有账号？联系管理员在后台创建一个。</p>
+    </div>
+
+    <div class="auth__right">
+      <div class="illustration">
+        <div class="illu__badge">AI</div>
+        <h3 class="illu__title">Resume Rewriter</h3>
+        <p class="illu__desc">粘贴或上传简历，选择岗位与风格，一键生成更贴合岗位的简历版本。</p>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

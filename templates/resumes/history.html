@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'resumes/base.html' %}
+
+{% block title %}历史记录{% endblock %}
+
+{% block breadcrumbs %}
+  {{ block.super }}
+{% endblock %}
+
+{% block content %}
+<div class="actions mt-12">
+  <a class="btn btn--secondary" href="{% url 'resumes:dashboard' %}">返回仪表盘</a>
+  <a class="btn btn--ghost" href="{% url 'resumes:debug_text_dashboard' %}">新建改写</a>
+</div>
+
+<section class="history-list mt-16">
+  {% if results %}
+    <ul>
+      {% for rr in results %}
+        <li class="card mb-12">
+          <strong>{{ rr.target_role }}</strong>
+          <span class="muted">({{ rr.created_at|date:"Y-m-d H:i" }})</span>
+          <p>风格: {{ rr.tone }}, 提供商: {{ rr.provider }}, Tokens: {{ rr.tokens_used }}, 延迟: {{ rr.latency_ms }} ms</p>
+          <pre class="output-text">{{ rr.output_text }}</pre>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>暂无历史记录。</p>
+  {% endif %}
+</section>
+{% endblock %}

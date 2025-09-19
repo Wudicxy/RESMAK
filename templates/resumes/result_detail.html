@@ -1,10 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'resumes/base.html' %}
+
+{% block title %}改写结果详情{% endblock %}
+
+{% block breadcrumbs %}
+{% with breadcrumb_items=[
+    {'url': '{% url "resumes:history" %}', 'label': '我的历史'},
+    {'url': '{% url "resumes:resume_detail" result.resume.id %}', 'label': result.resume.title},
+    {'url': '', 'label': '改写结果'}
+] %}
+  {{ block.super }}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+<h2>改写结果详情</h2>
+
+<p><strong>岗位：</strong>{{ result.target_role }}</p>
+<p><strong>风格：</strong>{{ result.tone }}</p>
+<p><strong>Provider：</strong>{{ result.provider }}</p>
+<p><strong>Tokens 用量：</strong>{{ result.tokens_used }}</p>
+<p><strong>延迟：</strong>{{ result.latency_ms }} ms</p>
+
+<h3>改写后的文本：</h3>
+<pre>{{ result.output_text }}</pre>
+
+<a class="btn btn--ghost" href="{% url 'resumes:resume_detail' result.resume.id %}">返回改写历史</a>
+{% endblock %}

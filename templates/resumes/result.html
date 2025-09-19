@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<!-- templates/resumes/result.html -->
+{% extends 'resumes/base.html' %}
+{% block title %}改写结果{% endblock %}
+{% block content %}
+<h2>改写结果</h2>
+<p><strong>岗位：</strong>{{ rr.target_role }}（风格：{{ rr.tone }}）</p>
+<pre style="white-space:pre-wrap">{{ rr.output_text }}</pre>
+<a href="{% url 'resumes:dashboard' %}">返回继续改写</a>
+{% endblock %}

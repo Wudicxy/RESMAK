@@ -1,7 +1,7 @@
 # resumes/services/providers.py
 import time
 from dataclasses import dataclass
-
+from .provider_hunyuan import HunyuanProvider
 @dataclass
 class ProviderOutput:
     text: str
@@ -31,6 +31,13 @@ Matched Requirements:
             "latency_ms": int((time.time() - start) * 1000)
         }
 
-def get_provider() -> RewriteProvider:
-    # 将来切到真实 Provider 时改这里
-    return DummyRewriteProvider()
+def get_provider():
+    return HunyuanProvider()
+
+
+def basic_clean(text: str | None) -> str:
+    if not text:
+        return ''
+    # 去 BOM、替换奇怪空格等
+    text = text.replace('\ufeff', '').strip()
+    return text

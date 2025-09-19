@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'resumes/base.html' %}
+
+{% block title %}{{ resume.title }} 的改写历史{% endblock %}
+
+{% block breadcrumbs %}
+{% with breadcrumb_items=[
+    {'url': '{% url "resumes:history" %}', 'label': '我的历史'},
+    {'url': '', 'label': resume.title}
+] %}
+  {{ block.super }}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+<h2>{{ resume.title }} 的改写历史</h2>
+<ul>
+  {% for r in results %}
+    <li>
+      <strong>改写时间：</strong>{{ r.created_at|date:"Y-m-d H:i" }},
+      <strong>岗位：</strong>{{ r.target_role }},
+      <strong>Provider：</strong>{{ r.provider }},
+      <a href="{% url 'resumes:result_detail' r.id %}">查看详情</a>
+    </li>
+  {% empty %}
+    <li>暂无改写记录</li>
+  {% endfor %}
+</ul>
+<a class="btn btn--ghost" href="{% url 'resumes:history' %}">返回历史列表</a>
+{% endblock %}

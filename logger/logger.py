@@ -1,27 +1,42 @@
 import os
 import logging
 from logging.handlers import RotatingFileHandler
+from pathlib import Path
+from .conf import settings as log_settings
 
-def get_logger(current_file: str):
-    # 取文件名
-    file_name = os.path.basename(current_file).replace(".py", "")
+def _safe_module_name(current_file: str) -> str:
+    base = os.path.basename(current_file)
+    return os.path.splitext(base)[0] or "app"
 
-    # 日志目录（项目根目录/logs）
-    log_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "logs")
-    os.makedirs(log_dir, exist_ok=True)
+def get_logger(current_file: str) -> logging.Logger:
+    """
+    传入当前文件路径（一般用 __file__），返回专属 logger。
+    日志路径：<LOG_DIR>/<module>.log
+    """
+    module_name = _safe_module_name(current_file)
+    logger = logging.getLogger(f"app_logger.{module_name}")
+    logger.setLevel(log_settings.LEVEL)
 
-    # 日志文件路径
-    log_file = os.path.join(log_dir, f"{file_name}.log")
-
-    # 创建 logger
-    logger = logging.getLogger(file_name)
-    logger.setLevel(logging.ERROR)  # 只记录错误及以上级别
-
-    # 避免重复添加 handler
     if not logger.handlers:
-        handler = RotatingFileHandler(log_file, maxBytes=5*1024*1024, backupCount=5, encoding="utf-8")
-        formatter = logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-        handler.setFormatter(formatter)
-        logger.addHandler(handler)
+        Path(log_settings.LOG_DIR).mkdir(parents=True, exist_ok=True)
+        log_file = Path(log_settings.LOG_DIR) / f"{module_name}.log"
+
+        file_handler = RotatingFileHandler(
+            str(log_file),
+            maxBytes=log_settings.MAX_BYTES,
+            backupCount=log_settings.BACKUP_COUNT,
+            encoding="utf-8",
+        )
+        formatter = logging.Formatter(log_settings.FORMAT)
+        file_handler.setFormatter(formatter)
+        logger.addHandler(file_handler)
+
+        if log_settings.CONSOLE:
+            console = logging.StreamHandler()
+            console.setFormatter(formatter)
+            logger.addHandler(console)
+
+        # 避免向 root logger 传播导致重复打印
+        logger.propagate = False
 
     return logger

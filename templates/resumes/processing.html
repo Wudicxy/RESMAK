@@ -1,10 +1,58 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{# templates/resumes/processing.html #}
+{% extends 'resumes/base.html' %}
+{% block title %}正在改写…{% endblock %}
+{% block content %}
+<div class="card mt-16">
+  <h2 class="h3">正在改写你的简历</h2>
+  <p class="muted">这大约需要几秒到一两分钟，请勿关闭页面。</p>
+
+  <div class="progress mt-12" style="width:100%; height:8px; background:#eee; border-radius:4px; overflow:hidden;">
+    <div id="bar" class="progress__bar" style="height:100%; width:0; background:#4f46e5; transition:width .3s ease;"></div>
+  </div>
+  <p class="muted mt-8" id="label">Progress: 0%</p>
+</div>
+
+<script>
+(function(){
+  const jobId = "{{ job_id }}";
+  const bar = document.getElementById('bar');
+  const label = document.getElementById('label');
+
+  // 可选：在后端进度未更新前，用前端“乐观进度”先动起来
+  let optimistic = 10;
+  const optimisticTimer = setInterval(() => {
+    optimistic = Math.min(optimistic + Math.random() * 8, 92);
+    bar.style.width = optimistic + '%';
+    label.textContent = 'Progress: ' + Math.floor(optimistic) + '%';
+  }, 600);
+
+  function poll(){
+    fetch("{% url 'resumes:job_status' job_id='__JOB__' %}".replace('__JOB__', jobId), {credentials: 'same-origin'})
+      .then(r => r.json())
+      .then(d => {
+        const p = typeof d.progress === 'number' ? d.progress : 0;
+        if (p > optimistic) {
+          bar.style.width = p + '%';
+          label.textContent = 'Progress: ' + p + '%';
+        }
+        if (d.failed) {
+          clearInterval(optimisticTimer);
+          label.textContent = '处理失败：' + (d.error || '未知错误');
+          bar.style.background = '#ef4444';
+          return;
+        }
+        if (d.done && d.result_url) {
+          clearInterval(optimisticTimer);
+          bar.style.width = '100%';
+          label.textContent = '完成，正在跳转…';
+          window.location.href = d.result_url;
+          return;
+        }
+        setTimeout(poll, 900);
+      })
+      .catch(() => setTimeout(poll, 1500));
+  }
+  poll();
+})();
+</script>
+{% endblock %}

@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'resumes/base.html' %}
+
+{% block title %}上传与改写简历{% endblock %}
+
+{% block breadcrumbs %}
+{% with breadcrumb_items=[{'url': '', 'label': '新建改写'}] %}
+  {{ block.super }}
+{% endwith %}
+{% endblock %}
+
+{% block content %}
+<div class="actions mt-12">
+  <a class="btn btn--secondary" href="{% url 'resumes:history' %}">查看历史记录</a>
+  <a class="btn btn--ghost" href="{% url 'resumes:debug_text_dashboard' %}">新建改写</a>
+</div>
+
+<section class="grid">
+  <!-- 左侧表单、右侧粘贴文本，保持原本布局 -->
+  ...
+</section>
+{% endblock %}

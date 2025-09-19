@@ -1,10 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{# templates/resumes/debug_text.html #}
+{% extends 'resumes/base.html' %}
+{% load static %}
+{% block title %}纯文本调试 · Resume Rewriter{% endblock %}
+
+{% block content %}
+<div class="card">
+  <h2 class="h3">纯文本调试入口（忽略文件上传）</h2>
+  <p class="muted">仅用于验证：表单 → Provider → 保存 → 跳转结果 是否通畅。</p>
+
+  {% if form.errors %}
+    <ul class="alerts mt-12">
+      {% for field, errors in form.errors.items %}
+        <li class="alert alert--error"><strong>{{ field }}</strong>: {{ errors|join:", " }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+  <form method="post" class="form mt-16">
+    {% csrf_token %}
+    <div class="form__group">
+      <label class="form__label">应聘岗位</label>
+      {{ form.target_role }}
+    </div>
+    <div class="form__group mt-12">
+      <label class="form__label">岗位要求（JD）</label>
+      {{ form.job_description}}
+    </div>
+    <div class="form__group mt-12">
+      <label class="form__label">简历文本（必填）</label>
+      {{ form.raw_text}}
+    </div>
+    <div class="form__group mt-12">
+      <label class="form__label">风格</label>
+      {{ form.tone }}
+    </div>
+    <div class="actions mt-16">
+      <button class="btn btn--primary" type="submit">开始改写（调试）</button>
+      <a class="btn btn--ghost" href="{% url 'resumes:debug_text' %}">重置</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
